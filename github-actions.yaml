@@ -1,0 +1,22 @@
+name: Deploy NodeJs app on checkout
+on: [push]
+jobs:
+  push-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      name: Checkout a repo
+      uses: actions/checkout@v3
+
+      name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: $ {{github.actor}}
+        password: $ {{secrets.GITHUB_TOKEN}}
+
+      name: Build an image
+      run: docker build -t ghcr.io/romansabechkine/node-app .
+
+      name: Push an image
+      run: docker push ghcr.io/romansabechkine/node-app:latest
+      
