@@ -1,6 +1,6 @@
 name: Deploy NodeJs app on checkour
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [checkout]
+on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
