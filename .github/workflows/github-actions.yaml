@@ -5,14 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -uses: actions/checkout@v3
+      -run: docker build -t ghcr.io/romansabechkine/node-app .
 
       -uses: docker/login-action@v1
       with:
         registry: ghcr.io
         username: $ {{github.actor}}
         password: $ {{secrets.GITHUB_TOKEN}}
-
-      -run: docker build -t ghcr.io/romansabechkine/node-app .
 
       -run: docker push ghcr.io/romansabechkine/node-app:latest
       
