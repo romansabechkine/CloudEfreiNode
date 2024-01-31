@@ -15,6 +15,7 @@ jobs:
          username: $ {{github.actor}}
          password: $ {{secrets.GITHUB_TOKEN}}
 
+
       - name: push the image to github container registry
         run: docker push ghcr.io/romansabechkine/node-app:latest
       
